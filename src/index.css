@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 body {
-  background-image: url('/geodude-pattern.png');
-  background-repeat: repeat;
+  background-image: url('https://wallpaperbat.com/img/8619976-pokedex-wallpaper-free-pokedex.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
 }

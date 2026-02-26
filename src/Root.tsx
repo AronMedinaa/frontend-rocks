@@ -1,53 +1,86 @@
-/*import { useState, useEffect } from "react";
-import { Link } from "react-router";
 import { PokeAPI } from "./api";
-*/
 
-interface Props {
+type Props = {
   id: number;
   image: string;
   name: string;
   types: string[];
-}
+};
 
-export const Card: React.FC<Props> = (props) => (
-  <div className="bg-white border border-gray-300 rounded-lg shadow-md relative w-2xs flex items-center justify-center h-80">
-    <h4 className="text-xl text-gray-900 tracking-wide font-bold absolute left-4 top-2">
-      {props.name} -{" "}
-      <span className="text-gray-700 font-medium">{props.id}</span>
-    </h4>
+export const Card: React.FC<Props> = (props) => {
+  const paddedId = String(props.id).padStart(4, "0");
+  
+  return (
+    <div className="w-96 flex flex-col items-center gap-4 p-8 bg-white rounded-lg shadow-lg">
+      <div className="w-full flex justify-center bg-gray-100 rounded-lg py-8">
+        <img
+          src={props.image}
+          alt={props.name}
+          className="w-56 h-56 object-contain"
+        />
+      </div>
 
-    <img
-      src={props.image}
-      alt={props.name}
-      className="w-36 h-36 object-contain"
-    />
+      <p className="text-gray-500 text-lg font-semibold">N° {paddedId}</p>
 
-    <div className="text-sm text-gray-700 absolute right-2 bottom-2">
-      <div className="flex justify-center space-x-2">
+      <h2 className="text-3xl font-bold text-gray-900">{props.name}</h2>
+
+      <div className="flex gap-3 flex-wrap justify-center">
         {props.types.map((type) => (
           <span
             key={type}
-            className={`font-bold text-white px-3 py-1 rounded-md text-xs ${getTypeColor(type)}`}
+            className={`font-bold text-white px-5 py-2 rounded-full text-base ${getTypeColor(type)}`}
           >
-            {type}
+            {getTypeLabel(type)}
           </span>
         ))}
       </div>
     </div>
-  </div>
-);
+  );
+};
+
 export function Root() {
-  return <Card
-    id={0}
-    image="https://placeholdit.com/400/dddddd/999999"
-    name="Pikachu"
-    types={["grass"]}
+  return (
+    <Card
+      id={1}
+      image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+      name="Bulbasaur"
+      types={["grass", "poison"]}
     />
+  );
 }
+
 function getTypeColor(type: string): string {
   return typeColors[type];
 }
+
+function getTypeColorValue(type: string): string {
+  return typeColorValues[type];
+}
+
+function getTypeLabel(type: string): string {
+  return typeLabels[type];
+}
+
+const typeLabels: { [key: string]: string } = {
+  fire: "Fuoco",
+  water: "Acqua",
+  grass: "Erba",
+  electric: "Elettro",
+  psychic: "Psico",
+  ice: "Ghiaccio",
+  dragon: "Drago",
+  dark: "Scuro",
+  fairy: "Folletto",
+  normal: "Normale",
+  fighting: "Lotta",
+  flying: "Volante",
+  poison: "Veleno",
+  ground: "Terra",
+  rock: "Roccia",
+  bug: "Coleottero",
+  ghost: "Spettro",
+  steel: "Acciaio",
+};
 
 const typeColors: { [key: string]: string } = {
   fire: "bg-red-500",
@@ -68,6 +101,27 @@ const typeColors: { [key: string]: string } = {
   bug: "bg-green-700",
   ghost: "bg-indigo-700",
   steel: "bg-gray-500",
+};
+
+const typeColorValues: { [key: string]: string } = {
+  fire: "#EF4444",
+  water: "#3B82F6",
+  grass: "#22C55E",
+  electric: "#FACC15",
+  psychic: "#EC4899",
+  ice: "#06B6D4",
+  dragon: "#6D28D9",
+  dark: "#374151",
+  fairy: "#F472B6",
+  normal: "#9CA3AF",
+  fighting: "#B91C1C",
+  flying: "#818CF8",
+  poison: "#A855F7",
+  ground: "#CA8A04",
+  rock: "#854D0E",
+  bug: "#15803D",
+  ghost: "#4C1D95",
+  steel: "#6B7280",
 };
 
 /*
