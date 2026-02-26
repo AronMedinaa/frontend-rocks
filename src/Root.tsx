@@ -1,5 +1,3 @@
-import { PokeAPI } from "./api";
-
 type Props = {
   id: number;
   image: string;
@@ -53,10 +51,6 @@ function getTypeColor(type: string): string {
   return typeColors[type];
 }
 
-function getTypeColorValue(type: string): string {
-  return typeColorValues[type];
-}
-
 function getTypeLabel(type: string): string {
   return typeLabels[type];
 }
@@ -101,27 +95,6 @@ const typeColors: { [key: string]: string } = {
   bug: "bg-green-700",
   ghost: "bg-indigo-700",
   steel: "bg-gray-500",
-};
-
-const typeColorValues: { [key: string]: string } = {
-  fire: "#EF4444",
-  water: "#3B82F6",
-  grass: "#22C55E",
-  electric: "#FACC15",
-  psychic: "#EC4899",
-  ice: "#06B6D4",
-  dragon: "#6D28D9",
-  dark: "#374151",
-  fairy: "#F472B6",
-  normal: "#9CA3AF",
-  fighting: "#B91C1C",
-  flying: "#818CF8",
-  poison: "#A855F7",
-  ground: "#CA8A04",
-  rock: "#854D0E",
-  bug: "#15803D",
-  ghost: "#4C1D95",
-  steel: "#6B7280",
 };
 
 /*
