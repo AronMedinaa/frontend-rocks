@@ -5,6 +5,6 @@ export const Detail = () => {
   </div>
 };
 
-const Card = (props: { title: string }) => {
+const Card: React.FC<{ title: string }> = (props) => {
   return <div className="bg-green-500 w-40 h-40 text-center flex items-center justify-center" title={props.title}>{props.title}</div>
 }

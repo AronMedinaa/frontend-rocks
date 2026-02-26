@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router";
-
-export const Detail = () => {
-  const { id } = useParams();
-  return <div className="text-6xl">Dettaglio: {id}</div>;
-};
+import { Link } from "react-router";
 
 export const App = () => {
   const [count, setCount] = useState(0);
